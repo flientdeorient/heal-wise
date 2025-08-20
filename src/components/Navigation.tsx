@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, Calendar, FileText, Users, Settings } from "lucide-react";
+import PatientDashboard from "./PatientDashboard";
+import ContactModal from "./ContactModal";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const navItems = [
     { name: "Home", href: "#home", icon: Heart },
@@ -40,8 +44,8 @@ const Navigation = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button variant="medical">Get Started</Button>
+            <Button variant="ghost" onClick={() => setIsDashboardOpen(true)}>Dashboard</Button>
+            <Button variant="medical" onClick={() => setIsContactOpen(true)}>Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,13 +73,17 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="ghost">Sign In</Button>
-                <Button variant="medical">Get Started</Button>
+                <Button variant="ghost" onClick={() => { setIsDashboardOpen(true); setIsMenuOpen(false); }}>Dashboard</Button>
+                <Button variant="medical" onClick={() => { setIsContactOpen(true); setIsMenuOpen(false); }}>Get Started</Button>
               </div>
             </div>
           </div>
         )}
       </div>
+      
+      {/* Modals */}
+      <PatientDashboard isOpen={isDashboardOpen} onClose={() => setIsDashboardOpen(false)} />
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </nav>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -37,24 +38,50 @@ const AppointmentModal = ({ isOpen, onClose, doctorName, doctorSpecialty }: Appo
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [reason, setReason] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const timeSlots = [
     "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
     "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the appointment data to your backend
-    console.log({
+    setIsSubmitting(true);
+
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    const appointmentData = {
       doctorName,
       date,
       time: selectedTime,
       patientName,
       email,
       phone,
-      reason
+      reason,
+      appointmentId: `APT-${Date.now()}`
+    };
+
+    // Store in localStorage for demo purposes
+    const existingAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+    existingAppointments.push(appointmentData);
+    localStorage.setItem('appointments', JSON.stringify(existingAppointments));
+
+    toast({
+      title: "Appointment Booked Successfully!",
+      description: `Your appointment with ${doctorName} is confirmed for ${date?.toLocaleDateString()} at ${selectedTime}.`,
     });
+
+    // Reset form
+    setDate(undefined);
+    setSelectedTime("");
+    setPatientName("");
+    setEmail("");
+    setPhone("");
+    setReason("");
+    setIsSubmitting(false);
     onClose();
   };
 
@@ -165,9 +192,9 @@ const AppointmentModal = ({ isOpen, onClose, doctorName, doctorSpecialty }: Appo
               type="submit" 
               variant="medical" 
               className="flex-1"
-              disabled={!date || !selectedTime || !patientName || !email || !phone}
+              disabled={isSubmitting || !date || !selectedTime || !patientName || !email || !phone}
             >
-              Book Appointment
+              {isSubmitting ? "Booking..." : "Book Appointment"}
             </Button>
           </div>
         </form>

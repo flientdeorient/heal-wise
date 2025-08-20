@@ -2,10 +2,17 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import DoctorsSection from "@/components/DoctorsSection";
 import PrescriptionSection from "@/components/PrescriptionSection";
+import ContactModal from "@/components/ContactModal";
+import EmergencyContact from "@/components/EmergencyContact";
 import { Button } from "@/components/ui/button";
-import { Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, AlertCircle } from "lucide-react";
+import { useState } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 const Index = () => {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -81,9 +88,21 @@ const Index = () => {
                 with AI-powered prescriptions and expert doctor consultations.
               </p>
               <div className="flex space-x-4">
-                <Button variant="secondary" size="sm">
+                <Button 
+                  variant="secondary" 
+                  size="sm"
+                  onClick={() => setIsContactOpen(true)}
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Us
+                </Button>
+                <Button 
+                  variant="destructive" 
+                  size="sm"
+                  onClick={() => setIsEmergencyOpen(true)}
+                >
+                  <AlertCircle className="w-4 h-4 mr-2" />
+                  Emergency
                 </Button>
               </div>
             </div>
@@ -122,6 +141,13 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Modals */}
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <EmergencyContact isOpen={isEmergencyOpen} onClose={() => setIsEmergencyOpen(false)} />
+      
+      {/* Toast Notifications */}
+      <Toaster />
     </div>
   );
 };
