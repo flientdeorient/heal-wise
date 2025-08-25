@@ -71,27 +71,8 @@ const PrescriptionSection = () => {
           })}
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 text-center border border-primary/10">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Ready to Try AI Prescriptions?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            To enable AI prescription features and secure medical data storage, 
-            connect your HealWise account to our secure Supabase backend.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="medical" size="lg">
-              Connect Supabase Backend
-            </Button>
-            <Button variant="outline" size="lg">
-              Learn More
-            </Button>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4">
-            Secure database • Authentication • File storage • Edge functions
-          </p>
-        </div>
+     
+     
       </div>
     </section>
   );

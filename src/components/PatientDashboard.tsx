@@ -35,7 +35,7 @@ const PatientDashboard = ({ isOpen, onClose }: PatientDashboardProps) => {
   const upcomingAppointments = [
     {
       id: 1,
-      doctor: "Dr. Sarah Johnson",
+      doctor: "Dr. M Rahaman",
       specialty: "Cardiologist",
       date: "Today",
       time: "2:30 PM",
@@ -44,7 +44,7 @@ const PatientDashboard = ({ isOpen, onClose }: PatientDashboardProps) => {
     },
     {
       id: 2,
-      doctor: "Dr. Emily Rodriguez",
+      doctor: "Dr. Bholanath Aich",
       specialty: "Pediatrician",
       date: "Tomorrow",
       time: "10:00 AM",
@@ -57,7 +57,7 @@ const PatientDashboard = ({ isOpen, onClose }: PatientDashboardProps) => {
     {
       id: 1,
       medication: "Lisinopril 10mg",
-      prescriber: "Dr. Sarah Johnson",
+      prescriber: "Dr. M Rahaman",
       date: "2024-01-15",
       instructions: "Take once daily with water",
       refillsLeft: 2
@@ -65,7 +65,7 @@ const PatientDashboard = ({ isOpen, onClose }: PatientDashboardProps) => {
     {
       id: 2,
       medication: "Metformin 500mg",
-      prescriber: "Dr. Michael Chen",
+      prescriber: "Dr. S Mitro",
       date: "2024-01-10",
       instructions: "Take twice daily with meals",
       refillsLeft: 1

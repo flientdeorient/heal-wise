@@ -39,15 +39,32 @@ const Hero = () => {
               <Calendar className="mr-2" />
               Book Appointment
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20"
-              onClick={() => document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <Heart className="mr-2" />
-              Find Doctors
-            </Button>
+            <Button
+  variant="outline"
+  size="lg"
+  className="
+    text-lg px-8 py-4
+    bg-white/10 
+    border border-white/30 
+    text-white 
+    backdrop-blur-md
+    transition-all duration-300 ease-in-out
+    hover:bg-white/20
+    hover:border-white
+    hover:shadow-lg
+    hover:scale-105
+    active:scale-95
+  "
+  onClick={() =>
+    document
+      .getElementById('doctors')
+      ?.scrollIntoView({ behavior: 'smooth' })
+  }
+>
+  <Heart className="mr-2" />
+  Find Doctors
+</Button>
+
           </div>
           
           {/* Feature Pills */}

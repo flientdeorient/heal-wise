@@ -86,7 +86,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 </div>
                 <div>
                   <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">1-800-HEALWISE</p>
+                  <p className="text-muted-foreground">1800-202226</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -104,7 +104,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 </div>
                 <div>
                   <p className="font-medium">Availability</p>
-                  <p className="text-muted-foreground">Nationwide Coverage</p>
+                  <p className="text-muted-foreground">Kolkata,WB</p>
                 </div>
               </div>
             </div>

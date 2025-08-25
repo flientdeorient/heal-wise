@@ -3,17 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, Calendar, FileText, Users, Settings } from "lucide-react";
 import PatientDashboard from "./PatientDashboard";
 import ContactModal from "./ContactModal";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   const navItems = [
     { name: "Home", href: "#home", icon: Heart },
     { name: "Doctors", href: "#doctors", icon: Users },
-    { name: "Appointments", href: "#appointments", icon: Calendar },
+    // { name: "Appointments", href: "#appointments", icon: Calendar },
     { name: "Prescriptions", href: "#prescriptions", icon: FileText },
+
   ];
 
   return (
@@ -45,7 +49,9 @@ const Navigation = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" onClick={() => setIsDashboardOpen(true)}>Dashboard</Button>
-            <Button variant="medical" onClick={() => setIsContactOpen(true)}>Get Started</Button>
+            <Button variant="medical" onClick={() => setIsContactOpen(true)}>Contact Us</Button>
+            <Button onClick={() => navigate('/login')}>Login</Button>
+            <Button onClick={() => navigate('/signup')}>Sign up</Button>
           </div>
 
           {/* Mobile Menu Button */}

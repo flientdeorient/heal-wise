@@ -122,7 +122,7 @@ const Index = () => {
               <div className="space-y-2 text-background/70">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>1-800-HEALWISE</span>
+                  <span>1800202226</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
