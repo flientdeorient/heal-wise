@@ -15,14 +15,19 @@ export default function Dashboard() {
           navigate("/login");
           return;
         }
+        setUser({
+          firstName:"Tanbir",
+          lastName: "Ali",
+          role:"Doctor"
+        })
 
-        const res = await axios.get("http://localhost:4000/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        // const res = await axios.get("http://localhost:4000/api/auth/me", {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // });
 
-        setUser(res.data.user);
+        // setUser(res.data.user);                 
       } catch (error: any) {
         toast.error("Session expired. Please login again.");
         localStorage.removeItem("token");

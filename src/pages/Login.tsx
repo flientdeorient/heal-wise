@@ -25,6 +25,8 @@ export default function Login() {
         { headers: { "Content-Type": "application/json" } }
       );
 
+      console.log("the response:", res)
+
       // Check for token
       const token = res.data?.token;
       if (!token) throw new Error("No token returned from server");
