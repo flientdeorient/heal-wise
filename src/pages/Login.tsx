@@ -25,20 +25,32 @@ export default function Login() {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log("the response:", res)
+      console.log("the response:", res);
 
-      // Check for token
+      // Check for token and role
       const token = res.data?.token;
+      const userRole = res.data?.user?.role; // Assuming backend returns user object with role
+
       if (!token) throw new Error("No token returned from server");
 
       // Store token in localStorage
       localStorage.setItem("token", token);
 
+      // Optionally, store user info including role if you want
+      localStorage.setItem("userRole", userRole);
+
       // Show success toast
       toast.success(res.data?.message || "Login successful!");
 
-      // Redirect to dashboard
-      navigate("/dashboard");
+      // Role-based redirection
+      if (userRole === "doctor") {
+        navigate("/dashboard");
+      } else if (userRole === "patient") {
+        navigate("/appointments");
+      } else {
+        // Default fallback
+        navigate("/dashboard");
+      }
     } catch (error: any) {
       const msg =
         error?.response?.data?.message ||
